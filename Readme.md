@@ -41,6 +41,7 @@ res = r.post(url, data=data, headers=headers)
 >+ 方法3: 持久到文件或数据库中
 
 + 前置后置
+
 pytest在根目录下conftest.py文件防治前置后置，
 ```
 @pytest.fixture(scope='session', autouse=True)    # 设置前置范围，该文件使用不需要引入
