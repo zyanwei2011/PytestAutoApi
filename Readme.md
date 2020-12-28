@@ -54,8 +54,42 @@ def demo(func)：                    #当需要前置的返回作为参数时，
 + 参数化
 ```
 @pytest.mark.parametrize('a, b', [(1, 2),(3, 4)])            #装饰器进行参数化
+
+```
++ 运行
+
+pytest支持命令行运行模式，可在pytest.ini中配置，直接点击main.py文件或命令行输入pytest运行即可
+```
+-v 说明：可以输出用例更加详细的执行信息，比如用例所在的文件及用例名称等
+-s 说明：控制台输出我们用例中的调式或log信息
+-m ”标记“ 说明：执行特定的测试用例。我们再次修改一下我们的用例，并添加一个新的用例
+-k "关键字" 说明：执行用例包含“关键字”的用例
+-q 说明：简化控制台的输出
+-x 说明：遇到错误时停止运行
+-n m 说明：m个CPU或终端并行执行(插件pytest-xdist)
+-x --maxfail=n 说明：当错误数达到n个时停止运行(pytest-rerunfailures )
+--reruns 2 说明：运行失败后立即重运行n次
+--reruns-delay 5 说明：每次重运行间隔n秒
+```
+pytest支持使用pytest.main(['-m smoke',...])方式运行，但该运行方式的部分参数无法被系统sys.args方法获取，导致无法获取部分变量。不建议使用。
+
++ 自定义命令行参数
+
+```python
+def pytest_addoption(parser):
+    """
+    # 自定义测试环境参数
+    :param parser:
+    :return:
+    """
+    parser.addoption("--env", action="store", default="test",
+                     help="env: test environment, such as production, prerelease, test. Detail refer to env.py")
+
 ```
 
++ 测试报告
+
+allure插件(略)
 
 
 
