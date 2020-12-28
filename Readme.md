@@ -18,6 +18,7 @@
 ```
 ### 数据处理
 + 登陆态处理
+
 Cookies作为参数传入
 ```python
 res = requests.post(url, data=data, headers=headers，cookies=Cookie)
@@ -33,3 +34,29 @@ r = requests.Session()
 # 当存在cookies时，使用r.cookies['cookie'] = Cookie,不存在cookies，使用r.request直接去登陆，登陆成功后登陆态信息即保存在r中。
 res = r.post(url, data=data, headers=headers)
 ```
++ 接口关联处理
+方法1: 接口处理层，直接将上一接口的返回作为下一个接口的入参
+方法2: 将部分数据存储为全局变量或者类变量
+方法3: 持久到文件或数据库中
+
++ 前置后置
+pytest在根目录下conftest.py文件防治前置后置，
+```
+@pytest.fixture(scope='session', autouse=True)    # 设置前置范围，该文件使用不需要引入
+
+@pytest.mark.usefixtures('函数名')          # 不需要将前置返回结果需要作为参数传入时使用
+
+def demo(func)：                    #当需要前置的返回作为参数时，直接在将函数名作为参数传入  
+  r = func()
+```
++ 参数化
+```
+@pytest.mark.parametrize('a, b', [(1, 2),(3, 4)])            #装饰器进行参数化
+```
+
+
+
+
+
+
+
