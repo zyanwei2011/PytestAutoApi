@@ -1,0 +1,8 @@
+account:
+  amp:
+    password: 456
+    username: 123
+    ...: ...
+
+host:
+  httpbin_host: http://www.httpbin.org

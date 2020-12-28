@@ -1,0 +1,19 @@
+httpbin_get:
+  apiTitle: httpbin get请求               #  接口自命名
+  requestData:
+    header: common_header                #  请求头，此处在配置文件中动态取
+    method: get                          #  请求方式，get/post/delete/put/patch
+    host: httpbin_host                   #  请求域名，此处处理为应用名，根据不同环境取不同的host
+    route: /get                          # 请求路径
+    cookies:
+    params:                              # get--params,post--data,json--json
+      a: qwer
+      b: 123
+
+
+
+
+
+
+
+
