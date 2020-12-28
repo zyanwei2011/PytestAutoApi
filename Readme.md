@@ -16,4 +16,20 @@
 ├── Readme          项目介绍文件
 └── requirements.txt         测试依赖包安装文件
 ```
-
+### 数据处理
++ 登陆态处理
+Cookies作为参数传入
+```python
+res = requests.post(url, data=data, headers=headers，cookies=Cookie)
+```
+cookies放在header
+```python
+headers = {"Cookie": Cookies, "User-Agent": "*"} 
+r = requests.post(url, data=data, headers=headers)
+```
+使用requests.Session()方法
+```python 
+r = requests.Session()
+# 当存在cookies时，使用r.cookies['cookie'] = Cookie,不存在cookies，使用r.request直接去登陆，登陆成功后登陆态信息即保存在r中。
+res = r.post(url, data=data, headers=headers)
+```
